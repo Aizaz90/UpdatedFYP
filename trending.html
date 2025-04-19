@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trending Visualization - Dread Trending</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Configure Tailwind theme -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#171717',
+            secondary: '#f5f5f5',
+            muted: '#f5f5f5',
+            'muted-foreground': '#737373',
+            border: '#e5e5e5',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white text-gray-900 min-h-screen">
+  <main class="container mx-auto py-10 px-4">
+    <h1 class="text-3xl font-bold mb-6">Dashboard</h1>
+    
+    <div class="rounded-lg border border-gray-200 bg-white mb-8">
+      <div class="p-4 border-b border-gray-200 flex justify-between items-start">
+        <div>
+          <h2 class="text-xl font-semibold flex items-center gap-2 mb-1">
+            <i data-lucide="trending-up" class="h-5 w-5 text-primary"></i>
+            Trending Topics
+          </h2>
+          <p class="text-gray-500 text-sm">Visualizing the most popular topics from your data</p>
+        </div>
+        <div class="flex gap-2">
+          <button id="zoom-in" class="p-2 rounded-md border border-gray-200 hover:bg-gray-100">
+            <i data-lucide="zoom-in" class="h-4 w-4"></i>
+          </button>
+          <button id="zoom-out" class="p-2 rounded-md border border-gray-200 hover:bg-gray-100">
+            <i data-lucide="zoom-out" class="h-4 w-4"></i>
+          </button>
+        </div>
+      </div>
+      <div class="p-4">
+        <div id="visualization-container" class="h-[500px] w-full relative bg-gray-100/20 rounded-md overflow-hidden">
+          <div class="flex justify-center items-center h-full text-gray-500">Loading visualization...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <a href="index.html" class="inline-block bg-primary text-white px-4 py-2 rounded-md hover:bg-gray-800 transition-colors">
+        Back to Dashboard
+      </a>
+    </div>
+  </main>
+
+  <script type="module" src="./elasticsearch.js"></script>
+  <script type="module" src="./trending.js"></script>
+</body>
+</html>

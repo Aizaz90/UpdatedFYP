@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dread Trending</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Configure Tailwind theme -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#171717',
+            secondary: '#f5f5f5',
+            muted: '#f5f5f5',
+            'muted-foreground': '#737373',
+            border: '#e5e5e5',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white text-gray-900 min-h-screen">
+  <main class="container mx-auto py-10 px-4">
+    <div class="flex justify-between items-start mb-8">
+      <div>
+        <h1 class="text-4xl font-bold mb-2">DarkNet Analyzer</h1>
+        <p class="text-gray-500 mb-8">Explore trending content from DarkWeb</p>
+      </div>
+      <a href="trending.html" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-gray-800 transition-colors">
+        Trendings
+      </a>
+    </div>
+
+    <div class="space-y-6">
+      <!-- Filters -->
+      <div class="flex flex-col md:flex-row gap-4 mb-6">
+        <form id="search-form" class="flex-1">
+          <div class="relative">
+            <i data-lucide="search" class="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500"></i>
+            <input 
+              type="search" 
+              id="search-query" 
+              placeholder="Search by title..." 
+              class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+            >
+          </div>
+        </form>
+
+        <select 
+          id="category-select" 
+          class="w-full md:w-[180px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+        >
+          <option value="all">All Categories</option>
+          <!-- Will be populated by JavaScript -->
+        </select>
+
+        <select 
+          id="author-select" 
+          class="w-full md:w-[180px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+        >
+          <option value="all">All Authors</option>
+          <!-- Will be populated by JavaScript -->
+        </select>
+
+        <select 
+          id="sort-select" 
+          class="w-full md:w-[180px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+        >
+          <option value="votes">Most Votes</option>
+          <option value="comments">Most Comments</option>
+          <option value="date">Latest</option>
+        </select>
+      </div>
+
+      <!-- Trending Content -->
+      <div class="rounded-lg border border-gray-200 bg-white">
+        <div class="p-4 border-b border-gray-200">
+          <h2 class="text-xl font-semibold">Trending Content</h2>
+        </div>
+        <div id="trending-table" class="divide-y divide-gray-200">
+          <div class="p-8 text-center text-gray-500">Loading...</div>
+        </div>
+      </div>
+
+      <!-- Total Results -->
+      <div id="total-results" class="text-gray-500 text-sm text-center">Total results: 0</div>
+
+      <!-- Pagination -->
+      <div id="pagination" class="flex justify-center gap-1">
+        <!-- Will be populated by JavaScript -->
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="./elasticsearch.js"></script>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

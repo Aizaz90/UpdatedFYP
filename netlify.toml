@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/api/*"
+  to = "https://my-elasticsearch-project-a977ca.es.us-east-1.aws.elastic.cloud:443/:splat"
+  status = 200
+  force = true
+  headers = {Authorization = "ApiKey RXUyeU5KWUJGQnJWV3pWdVVNWDY6ZkhGbjhITEtBLVA0VjNXcmd5WGRvdw=="} 
